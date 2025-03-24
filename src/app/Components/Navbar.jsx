@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Navbar() {
   return (
-    <div className='h-16 w-screen bg-white shadow-2xl rounded-xl fixed top-2'>
+    <div className='h-16 w-screen bg-gray-200 shadow-2xl fixed border-b-[#222]'>
       
     </div>
   )

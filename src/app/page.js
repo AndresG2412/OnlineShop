@@ -4,8 +4,8 @@ import Navbar from "./Components/Navbar";
 export default function Home() {
   return (
     <>
+      <Navbar />
       <p>
-        <Navbar />
         Home Page
       </p>
     </>
