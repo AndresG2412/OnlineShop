@@ -7,7 +7,7 @@ import logo from '../Images/Logo2.webp'
 
 export default function Navbar() {
   return (
-    <div className='h-16 w-screen bg-gray-200 shadow-2xl fixed border-b-[#222] flex justify-between items-center'>
+    <div className='h-16 w-screen bg-gray-200 shadow-2xl fixed flex justify-between items-center border-b-2 border-[#222]'>
       <Image src={logo} className='h-12 w-auto mx-4 hover:scale-110 hover:transition-all' alt="logo_main"/>
 
       <div className='flex gap-10'>
@@ -16,7 +16,7 @@ export default function Navbar() {
         <Link className='uppercase font-semibold text-xl tracking-wide hover:scale-110 hover:transition-all' href="../Pages/Carrito">Carrito</Link>
       </div>
 
-      <Image src={user} className='h-12 w-12 mx-4 hover:scale-110 hover:transition-all' alt='user_logo'/>
+      <Image src={user} className='h-10 w-10 mx-4 hover:scale-110 hover:transition-all' alt='user_logo'/>
     </div>
   )
 }
