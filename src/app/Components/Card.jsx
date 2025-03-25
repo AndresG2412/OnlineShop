@@ -4,7 +4,7 @@ import '../globals.css'
 export default function Card() {
   return (
     <div class="card">
-        <div class="card-img"></div>
+    <div class="card-img"></div>
         <div class="card-info">
         <p class="text-title">Product title </p>
         <p class="text-body">Product description and details</p>
