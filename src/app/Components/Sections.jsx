@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Promociones() {
+export default function Sections() {
   return (
     <div>
-      Promociones Page
+      
     </div>
   )
 }
