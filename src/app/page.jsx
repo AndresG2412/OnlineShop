@@ -5,8 +5,7 @@ import Products from "./Components/Products";
 
 export default function Home() {
     return (
-        <div className="mt-24 w-screen h-auto">
-            <Busqueda />
+        <div className="mt-36 w-screen h-auto">
             <Products nombre={"CORTINAS"}/>
             <Products nombre={"PERFUMES"}/>
             <Products nombre={"PIJAMAS"}/>
