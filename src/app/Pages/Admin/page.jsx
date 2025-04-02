@@ -1,9 +1,18 @@
+"use client"
+
 import React from 'react'
+import { useForm } from 'react-hook-form'
 
 import logo from '../../Images/Logo2.webp'
 import Image from 'next/image'
 
 export default function Login() {
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
     const onSubmit = (data) => console.log(data)
 
@@ -11,8 +20,8 @@ export default function Login() {
         <div className='h-screen flex items-center'>
             <div className="mx-auto w-1/2">
                 <form
-                    className="min-h-96 px-8 py-6 mt-4 text-left bg-gray-900 rounded-xl shadow-lg"
-                    onSubmit={onSubmit()}>
+                    className="min-h-96 px-8 py-6 mt-4 text-left bg-gray-800 rounded-xl shadow-lg"
+                    onSubmit={handleSubmit(onSubmit)}>
                     <div className="flex flex-col justify-center items-center h-full select-none">
                         <div className="flex flex-col items-center justify-center gap-2 mb-8">
                             <Image 
@@ -23,20 +32,39 @@ export default function Login() {
                                 Bienvenido de vuelta
                                 </p>
                         </div>
-                            <div className="w-full flex flex-col gap-2">
+                            <div className={`w-full flex flex-col gap-2 ${
+                                   errors.Correo ? "mb-2" : " mb-4"
+                                }`}>
                                 <label className="font-semibold text-xl text-gray-400">Correo Electronico</label>
-                                <input 
+                                <input
+                                    {...register("Correo", {
+                                        required: true
+                                    })}
                                     type="email" 
-                                    className='w-full h-8 bg-white rounded-lg mb-4 pl-2 tracking-wider'
-                                    placeholder='Ingresa tu Correo Electronico'/>
+                                    className='w-full h-8 bg-white rounded-lg pl-2 tracking-wider'
+                                    placeholder='Ingresa tu Correo Electronico'
+                                    autoComplete='off'/>
+                                    
+                                {errors.Correo?.type === "required" && (
+                                    <span className='text-red-500'>El correo es requerido!</span>
+                                )}
                             </div>
                     </div>
-                        <div className="w-full flex flex-col gap-2">
+                        <div className={`w-full flex flex-col gap-2 ${
+                                   errors.Correo ? "mb-4" : " mb-8"
+                                }`}>
                             <label className="font-semibold text-xl text-gray-400">Contraseña</label>
                             <input 
-                                    type="password" 
-                                    className='w-full h-8 bg-white rounded-lg mb-6 pl-2 tracking-wider'
-                                    placeholder='Ingresa tu Contraseña'/>
+                                {...register("Contraseña", {
+                                    required: true
+                                })}
+                                type="password" 
+                                className='w-full h-8 bg-white rounded-lg pl-2 tracking-wider'
+                                placeholder='Ingresa tu Contraseña'/>
+                                
+                                {errors.Correo?.type === "required" && (
+                                    <span className='text-red-500'>La contraseña es requerida!</span>
+                                )}
                         </div>
                     <div>
                         <button
