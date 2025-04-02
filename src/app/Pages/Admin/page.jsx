@@ -3,7 +3,8 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
-import logo from '../../Images/Logo2.webp'
+import logo from '../../Images//nombre_inv.webp'
+import icon from '../../Images/icono_shop_2.webp'
 import Image from 'next/image'
 
 export default function Login() {
@@ -27,15 +28,16 @@ export default function Login() {
                             <Image 
                                 width={120}
                                 height={120}
-                                src={logo} className='mx-4 hover:scale-110 hover:transition-all' alt='user_logo'/>
+                                src={icon} className='mx-4 hover:scale-110 hover:transition-all mb-4' alt='user_logo'/>
+
                                 <p className="m-0 text-3xl font-semibold dark:text-white">
                                 Bienvenido de vuelta
                                 </p>
                         </div>
-                            <div className={`w-full flex flex-col gap-2 ${
+                            <div className={`w-3/4 flex flex-col gap-2 ${
                                    errors.Correo ? "mb-2" : " mb-4"
                                 }`}>
-                                <label className="font-semibold text-xl text-gray-400">Correo Electronico</label>
+                                <label className="font-semibold text-xl text-gray-400 text-center">Correo Electronico</label>
                                 <input
                                     {...register("Correo", {
                                         required: true
@@ -49,11 +51,11 @@ export default function Login() {
                                     <span className='text-red-500'>El correo es requerido!</span>
                                 )}
                             </div>
-                    </div>
-                        <div className={`w-full flex flex-col gap-2 ${
-                                   errors.Correo ? "mb-4" : " mb-8"
+
+                            <div className={`w-3/4 flex flex-col gap-2 ${
+                                   errors.Correo ? "mb-8" : " mb-8"
                                 }`}>
-                            <label className="font-semibold text-xl text-gray-400">Contraseña</label>
+                            <label className="font-semibold text-xl text-gray-400 text-center">Contraseña</label>
                             <input 
                                 {...register("Contraseña", {
                                     required: true
@@ -66,7 +68,10 @@ export default function Login() {
                                     <span className='text-red-500'>La contraseña es requerida!</span>
                                 )}
                         </div>
-                    <div>
+
+                    </div>
+                        
+                    <div className='flex w-2/4 justify-center mx-auto'>
                         <button
                             className="tracking-wider py-1 px-8 bg-blue-500 hover:bg-blue-800 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg cursor-pointer select-none text-xl"
                         >
