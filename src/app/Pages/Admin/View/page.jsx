@@ -56,7 +56,7 @@ export default function AdminView() {
     if (loading) {
         return (
             <div className='mt-24 flex justify-center items-center h-screen'>
-                <p className='text-white'>Cargando imágenes...</p>
+                <p className='text-white'>Cargando Opciones...</p>
             </div>
         )
     }
@@ -74,17 +74,17 @@ export default function AdminView() {
                 <h1 className="text-2xl font-bold text-white">Panel de Administración</h1>
             </div> */}
 
-            <div className="flex flex-wrap gap-4 p-4 bg-red-200">
-                {/* Renderizamos las imágenes desde Firebase */}
-                {imagenes.map((imagen) => (
+            <div className="flex justify-center p-4">
+                <div className="grid gap-4 grid-cols-2 max-w-md"> {/* Ajusta max-w-md según tu necesidad */}
+                    {imagenes.map((imagen) => (
                     <OptionsAdmin 
                         key={imagen.id}
                         src={imagen.Imagen}
                         titulo={imagen.Titulo}
                         alt={imagen.Alt}
                     />
-                ))}
-                
+                    ))}
+                </div>
             </div>
         </div>
     )
