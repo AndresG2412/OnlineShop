@@ -3,72 +3,105 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
-import { ROUTES } from '@/routes';
-import { useRouter } from "next/navigation";
+import { ROUTES } from '@/routes'
+import { useRouter } from "next/navigation"
+import Image from 'next/image'
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "@/Libs/firebase"
+import { toast } from 'react-hot-toast'
+import { useState, useEffect } from "react"
 
 import icon from '../../Images/icono_shop_2.webp'
-import Image from 'next/image'
-
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/Libs/firebase";
-import { toast } from 'react-hot-toast';
-import { useState, useEffect } from "react";
 
 export default function Login() {
-    const router = useRouter();
-    const [loading, setLoading] = useState(false);
-    const [authChecked, setAuthChecked] = useState(false); // Nuevo estado para controlar la verificación inicial
+    const router = useRouter()
+    const [loading, setLoading] = useState(false)
+    const [authChecked, setAuthChecked] = useState(false)
 
     // Verificar si ya está autenticado
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
-                router.push("/Pages/Admin/View");
+                router.push("/Pages/Admin/View")
             }
-            setAuthChecked(true); // Marcar que la verificación ha terminado
-        });
+            setAuthChecked(true)
+        })
 
-        return () => unsubscribe();
-    }, [router]);
+        return () => unsubscribe()
+    }, [router])
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+        setValue,
+        watch
+    } = useForm()
 
-    // ================ inicio de sesión admin ==================
+    // Manejador de inicio de sesión mejorado
     const onSubmit = async (data) => {
-        setLoading(true);
+        // Validación adicional del formulario
+        if (!data.Correo || !data.Contraseña) {
+            toast.error('Por favor complete todos los campos')
+            return
+        }
 
+        setLoading(true)
+        
         try {
-            const userCredential = await signInWithEmailAndPassword(
-                auth,
-                data.Correo.trim(),
-                data.Contraseña
-            );
+            // Limpieza de datos
+            const email = data.Correo.trim()
+            const password = data.Contraseña.trim()
 
-            toast.success("Bienvenido de vuelta!", { duration: 2500 });
-            router.push("/Pages/Admin/View");
+            // Intento de autenticación
+            await signInWithEmailAndPassword(auth, email, password)
+            
+            toast.success("¡Bienvenido de vuelta!", { 
+                duration: 2000,
+                position: 'top-center'
+            })
+            router.push("/Pages/Admin/View")
+            
         } catch (error) {
-            console.error("Error de autenticación:", error);
-            toast.error(error.message.includes("invalid-credential") 
-                ? "Credenciales incorrectas" 
-                : "Error al iniciar sesión", 
-                { duration: 2500 }
-            );
+            // Log informativo (no error) para desarrollo
+            if (process.env.NODE_ENV === 'development') {
+                console.info('Intento de autenticación fallido:', {
+                    email: data.Correo.trim(),
+                    errorCode: error.code
+                })
+            }
+            
+            // Mapeo de errores amigables
+            const errorMap = {
+                'auth/invalid-credential': 'Credenciales incorrectas',
+                'auth/user-not-found': 'Credenciales incorrectas',
+                'auth/wrong-password': 'Credenciales incorrectas',
+                'auth/invalid-email': 'Formato de email inválido',
+                'auth/too-many-requests': 'Demasiados intentos. Intente más tarde',
+                'auth/user-disabled': 'Cuenta deshabilitada',
+                'auth/network-request-failed': 'Problema de conexión. Verifique su internet'
+            }
+
+            const friendlyMessage = errorMap[error.code] || 'Error al iniciar sesión'
+            toast.error(friendlyMessage, { 
+                duration: 2500,
+                position: 'top-center'
+            })
+            
+            // Limpiar campo de contraseña después del error
+            setValue("Contraseña", "")
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
     }
 
-    // Mostrar spinner mientras se verifica el estado de autenticación
+    // Mostrar spinner de carga mientras verifica autenticación inicial
     if (!authChecked) {
         return (
             <div className="h-screen flex items-center justify-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
             </div>
-        );
+        )
     }
 
     return (
@@ -85,7 +118,7 @@ export default function Login() {
                                 src={icon} 
                                 className='mx-4' 
                                 alt='user_logo'
-                                priority // Para imágenes importantes
+                                priority
                             />
 
                             <div className=''>
@@ -97,9 +130,9 @@ export default function Login() {
                                 </p>
                             </div>
                         </div>
-                        <div className={`w-3/4 flex flex-col gap-2 ${
-                            errors.Correo ? "mb-2" : "mb-4"
-                        }`}>
+                        
+                        {/* Campo de Email */}
+                        <div className={`w-3/4 flex flex-col gap-2 ${errors.Correo ? "mb-2" : "mb-4"}`}>
                             <label className="font-semibold text-xl text-gray-400 text-center">Correo Electrónico</label>
                             <input
                                 {...register("Correo", {
@@ -121,6 +154,7 @@ export default function Login() {
                             )}
                         </div>
 
+                        {/* Campo de Contraseña */}
                         <div className={`w-3/4 flex flex-col gap-2 mb-8`}>
                             <label className="font-semibold text-xl text-gray-400 text-center">Contraseña</label>
                             <input 
@@ -144,6 +178,7 @@ export default function Login() {
                         </div>
                     </div>
                     
+                    {/* Botón de Submit */}
                     <div className='flex flex-col w-full md:w-2/4 justify-center mx-auto'>
                         <button
                             disabled={loading}
@@ -160,6 +195,7 @@ export default function Login() {
                         </button>
                     </div>
 
+                    {/* Enlace alternativo */}
                     <p className='hover:scale-110 hover:duration-300 text-red-500 tracking-wider text-lg text-center'>
                         <Link href={ROUTES.ADMIN}>¿No tienes una cuenta?</Link>
                     </p>

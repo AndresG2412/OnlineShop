@@ -15,7 +15,7 @@ export default function OptionsAdmin({ src, titulo, alt }) {
   return (
     <div className='md:w-40'>
       <Link href={"/"}>
-        <div className='rounded-lg bg-[#f2f2f2] px-4 py-2 flex flex-col items-center gap-y-2 justify-center'>
+        <div className='rounded-lg bg-[#f2f2f2] px-6 py-2 flex flex-col items-center gap-y-2 justify-center'>
           <Image 
             src={imageSrc}
             alt={alt || titulo}
@@ -24,7 +24,7 @@ export default function OptionsAdmin({ src, titulo, alt }) {
             className='rounded-lg'
             onError={() => setImageSrc('/placeholder-image.png')}
           />
-          <p className='text-center tracking-wide font-semibold uppercase hover:scale-110 hover:duration-300'>
+          <p className='text-center tracking-widest font-semibold uppercase hover:scale-110 hover:duration-300'>
             {titulo}
           </p>
         </div>
