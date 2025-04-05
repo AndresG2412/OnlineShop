@@ -70,17 +70,17 @@ export default function AdminView() {
                 CERRAR SESIÓN
             </button>
 
-            <div className="p-4">
+            {/* <div className="p-4">
                 <h1 className="text-2xl font-bold text-white">Panel de Administración</h1>
-            </div>
+            </div> */}
 
-            <div className="flex flex-wrap gap-4 p-4">
+            <div className="flex flex-wrap gap-4 p-4 bg-red-200">
                 {/* Renderizamos las imágenes desde Firebase */}
                 {imagenes.map((imagen) => (
                     <OptionsAdmin 
                         key={imagen.id}
                         src={imagen.Imagen}
-                        titulo={imagen.Alt}
+                        titulo={imagen.Titulo}
                         alt={imagen.Alt}
                     />
                 ))}
