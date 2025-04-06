@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function OptionsAdmin({ src, titulo, alt }) {
+export default function OptionsAdmin({ src, titulo, alt, ruta }) {
   const [imageSrc, setImageSrc] = React.useState(() => {
     try {
       new URL(src);
@@ -14,7 +14,7 @@ export default function OptionsAdmin({ src, titulo, alt }) {
 
   return (
     <div className='md:w-40'>
-      <Link href={"/"}>
+      <Link href={ruta || "/"}> 
         <div className='rounded-lg bg-[#f2f2f2] px-6 py-2 flex flex-col items-center gap-y-2 justify-center'>
           <Image 
             src={imageSrc}

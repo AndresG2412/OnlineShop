@@ -9,7 +9,6 @@ import { db } from "@/Libs/firebase"
 import { collection, getDocs, query, orderBy } from "firebase/firestore"
 
 import OptionsAdmin from '@/app/Components/OptionsAdmin'
-import icon_add from '@/app/Images/image.png'
 
 export default function AdminView() {
     const router = useRouter()
@@ -82,6 +81,7 @@ export default function AdminView() {
                         src={imagen.Imagen}
                         titulo={imagen.Titulo}
                         alt={imagen.Alt}
+                        ruta={imagen.Ruta}
                     />
                     ))}
                 </div>
