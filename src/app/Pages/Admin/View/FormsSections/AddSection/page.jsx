@@ -29,9 +29,6 @@ export default function page() {
         try {
             // Creamos un documento inicial en la nueva colección
             await addDoc(collection(db, collectionName), {
-            createdAt: new Date(),
-            createdBy: 'admin', // Puedes cambiar esto por el usuario actual
-            initialDoc: true
             });
   
             toast.success(`Colección "${collectionName}" creada exitosamente!`, {
@@ -56,7 +53,8 @@ export default function page() {
 
                     <p className='uppercase font-bold text-3xl text-center mb-8'>Crear nueva seccion</p>
 
-                    <div className={`mx-auto w-3/4 flex mb-8 flex-col gap-2 ${errors.Seccion ? "mb-2" : "mb-4"}`}>
+                    {/* Coleccion 1 */}
+                    <div className={`mx-auto w-3/4 flex mb-4 flex-col gap-2 ${errors.Seccion ? "mb-2" : "mb-4"}`}>
                         <label className="font-semibold text-xl text-gray-800">Nombre de la seccion</label>
                         <input
                             {...register("Seccion", { required: "El nombre de la seccion es requerido!" })}
@@ -71,11 +69,43 @@ export default function page() {
                         )}
                     </div>
 
+                    {/* Documento 1 */}
+                    <div className={`mx-auto w-3/4 flex mb-4 flex-col gap-2 ${errors.Producto ? "mb-2" : "mb-4"}`}>
+                        <label className="font-semibold text-xl text-gray-800">Nombre del Producto</label>
+                        <input
+                            {...register("Producto", { required: "El nombre del Producto es requerido!" })}
+                            type="text" 
+                            className='w-full h-8 bg-white rounded-lg pl-2 tracking-wider'
+                            placeholder='Nuevo Producto!'
+                            autoComplete='off'
+                        />
+                            
+                        {errors.Producto && (
+                            <span className='text-red-500'>{errors.Producto.message}</span>
+                        )}
+                    </div>
+
+                    {/* Caracteristicas Producto*/}
+                    <div className={`mx-auto w-3/4 flex mb-4 flex-col gap-2 ${errors.Precio ? "mb-2" : "mb-4"}`}>
+                        <label className="font-semibold text-xl text-gray-800">Precio</label>
+                        <input
+                            {...register("Precio", { required: "El precio es requerido!" })}
+                            type="number" 
+                            className='w-full h-8 bg-white rounded-lg pl-2 tracking-wider'
+                            placeholder='Nuevo Precio!'
+                            autoComplete='off'
+                        />
+                            
+                        {errors.Precio && (
+                            <span className='text-red-500'>{errors.Precio.message}</span>
+                        )}
+                    </div>
+
                     <button
                         type="submit"
-                        className="w-full uppercase font-semibold tracking-wider bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        className="mt-8 w-full uppercase font-semibold tracking-wider bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                         >
-                            Crear Colección
+                            Crear Seccion
                     </button>
             </form>
         </div>
