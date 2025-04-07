@@ -145,7 +145,7 @@ export default function Login() {
                                 type="email" 
                                 className='w-full h-8 bg-white rounded-lg pl-2 tracking-wider'
                                 placeholder='Ingresa tu Correo Electrónico'
-                                autoComplete='email'
+                                autoComplete='off'
                                 disabled={loading}
                             />
                             
