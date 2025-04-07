@@ -101,6 +101,19 @@ export default function page() {
                         )}
                     </div>
 
+                    <div className={`mx-auto w-3/4 flex mb-4 flex-col gap-2 ${errors.Imagen ? "mb-2" : "mb-4"}`}>
+                        <label className="font-semibold text-xl text-gray-800">Imagen</label>
+                        <input
+                            {...register("Imagen", { required: "La imagen es requerida!" })}
+                            type="image" 
+                            className='w-full h-8 bg-white rounded-lg'
+                        />
+                            
+                        {errors.Imagen && (
+                            <span className='text-red-500'>{errors.Imagen.message}</span>
+                        )}
+                    </div>
+
                     <button
                         type="submit"
                         className="mt-8 w-full uppercase font-semibold tracking-wider bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
