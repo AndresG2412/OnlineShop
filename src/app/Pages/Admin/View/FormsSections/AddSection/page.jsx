@@ -49,7 +49,7 @@ export default function Page() {
         <div className='w-screen h-screen flex justify-center items-center'>
             <button 
                 onClick={handleLogout}
-                className='fixed bottom-10 right-10 pointer border-1 border-white bg-red-500 py-2 px-4 rounded-lg tracking-wide font-semibold hover:bg-red-600 transition-colors duration-200'
+                className='text-white fixed bottom-10 right-10 pointer border-1 border-white bg-red-500 py-2 px-4 rounded-lg tracking-wide font-semibold hover:bg-red-600 transition-colors duration-200'
             >
                 VOLVER ATRAS
             </button>
