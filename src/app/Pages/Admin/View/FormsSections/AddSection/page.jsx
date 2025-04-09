@@ -5,8 +5,11 @@ import { useForm } from 'react-hook-form';
 import { db } from '@/Libs/firebase';
 import { doc, setDoc, collection } from 'firebase/firestore';
 import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from "next/navigation"
 
 export default function Page() {
+    const router = useRouter()
+    
     const { 
         register, 
         handleSubmit, 
@@ -37,9 +40,20 @@ export default function Page() {
             toast.error("Error al crear el producto");
         }
     };
+
+    const handleLogout = () => {
+        router.push("/Pages/Admin/View")
+    }
   
     return (
         <div className='w-screen h-screen flex justify-center items-center'>
+            <button 
+                onClick={handleLogout}
+                className='fixed bottom-10 right-10 pointer border-1 border-white bg-red-500 py-2 px-4 rounded-lg tracking-wide font-semibold hover:bg-red-600 transition-colors duration-200'
+            >
+                VOLVER ATRAS
+            </button>
+
             <Toaster />
             <form 
                 onSubmit={handleSubmit(createCollection)}
