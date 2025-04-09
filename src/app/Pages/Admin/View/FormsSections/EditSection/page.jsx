@@ -17,7 +17,7 @@ export default function page() {
             >
                 VOLVER ATRAS
             </button>
-            <p>Form Edit</p>
+            <p>Edit Delete</p>
         </div>
     )
 }
