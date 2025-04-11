@@ -8,14 +8,19 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from "next/navigation"
 
 export default function Page() {
+
+    // redireccionamiento de rutas automatico
     const router = useRouter()
     
+    // constantes de react hook form para validaciones, errores, variables, resetear formulario
     const { 
         register, 
         handleSubmit, 
         reset,
         formState: { errors } 
     } = useForm();
+
+    // funcion de crear coleccion
 
     const createCollection = async (data) => {
         try {
