@@ -17,6 +17,8 @@ export default function page() {
             >
                 VOLVER ATRAS
             </button>
+
+            {/* racha */}
             <p>Form Delete</p>
         </div>
     )
