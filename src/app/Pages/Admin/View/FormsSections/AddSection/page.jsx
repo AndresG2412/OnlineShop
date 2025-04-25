@@ -27,30 +27,18 @@ export default function Page() {
             const seccion = data.Seccion;
             const producto = data.Producto;
 
-            // Referencia a la subcolección: Tienda > Productos > seccion > producto
-            const productoRef = doc(
-                collection(
-                    doc(collection(db, "Tienda"), "Productos"),
-                    seccion
-                ),
-                producto
-            );
+            // Referencia directa: seccion (colección) > producto (documento)
+            const productoRef = doc(db, seccion, producto); // ¡Sin "Tienda"!
 
-            // Guardar producto en la subcolección
+            // Guardar producto en la colección de la sección
             await setDoc(productoRef, {
                 Precio: Number(data.Precio),
                 Imagen: data.Imagen?.[0]?.name || "Sin imagen"
             });
-
-            // Agregar el nombre de la sección al array 'Secciones' del documento Productos
-            const productosDocRef = doc(collection(db, "Tienda"), "Productos");
-
-            await updateDoc(productosDocRef, {
-                Secciones: arrayUnion(seccion)
-            });
-
+    
             toast.success("Producto y sección creados exitosamente!");
             reset();
+    
         } catch (error) {
             console.error("Error al crear el producto y/o actualizar secciones:", error);
             toast.error("Error al crear el producto");
