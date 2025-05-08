@@ -6,7 +6,7 @@ export default function page() {
     const router = useRouter()
 
     const handleLogout = () => {
-        router.push("/Pages/Admin/View")
+        router.push("/pages/Admin/View")
     }
 
     return (

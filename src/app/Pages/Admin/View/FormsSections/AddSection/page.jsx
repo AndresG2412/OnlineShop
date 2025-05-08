@@ -46,7 +46,7 @@ export default function Page() {
     };
 
     const handleLogout = () => {
-        router.push("/Pages/Admin/View")
+        router.push("/pages/Admin/View")
     }
 
     return (

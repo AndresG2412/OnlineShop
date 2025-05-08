@@ -22,7 +22,7 @@ export default function Login() {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
-                router.push("/Pages/Admin/View")
+                router.push("/pages/Admin/View")
             }
             setAuthChecked(true)
         })
@@ -60,7 +60,7 @@ export default function Login() {
                 duration: 2000,
                 position: 'top-center'
             })
-            router.push("/Pages/Admin/View")
+            router.push("/pages/Admin/View")
             
         } catch (error) {
             // Log informativo (no error) para desarrollo
@@ -195,11 +195,11 @@ export default function Login() {
                         </button>
                     </div>
 
+                </form>
                     {/* Enlace alternativo */}
                     <p className='hover:scale-110 hover:duration-300 text-red-500 tracking-wider text-lg text-center'>
                         <Link href={ROUTES.ADMIN}>¿No tienes una cuenta?</Link>
                     </p>
-                </form>
             </div>
         </div>
     )

@@ -45,7 +45,7 @@ export default function AdminView() {
         try {
             await auth.signOut()
             toast.success("Sesión cerrada correctamente", { duration: 2500 })
-            router.push("/Pages/Admin")
+            router.push("/pages/Admin")
         } catch (error) {
             console.error("Error al cerrar sesión:", error)
             toast.error("Ocurrió un error al cerrar sesión", { duration: 2500 })
