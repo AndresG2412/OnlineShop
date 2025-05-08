@@ -8,7 +8,7 @@ import { db } from "@/Libs/firebase"
 // Agrega estas importaciones
 import { collection, getDocs, query, orderBy } from "firebase/firestore"
 
-import OptionsAdmin from '@/app/Components/OptionsAdmin'
+import OptionsAdmin from '@/app/components/OptionsAdmin'
 
 export default function AdminView() {
     const router = useRouter()

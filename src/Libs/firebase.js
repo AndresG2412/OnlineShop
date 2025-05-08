@@ -6,7 +6,7 @@ import {
   getDocs, 
   query, 
   orderBy,
-  getCollections 
+  listCollections, 
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -31,5 +31,6 @@ export {
   collection,
   getDocs,
   query, 
-  orderBy
+  orderBy,
+  listCollections 
 };
