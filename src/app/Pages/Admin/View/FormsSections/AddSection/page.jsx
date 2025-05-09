@@ -2,17 +2,15 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { db } from '@/Libs/firebase';
-import { doc, setDoc, collection, updateDoc, arrayUnion } from 'firebase/firestore';
+import { db } from '@/Libs/firebase'; // Asegúrate que esta ruta sea correcta para tu configuración de Firebase
+// Importaciones de Firestore actualizadas
+import { doc, setDoc, updateDoc, arrayUnion, getDoc } from 'firebase/firestore'; 
 import toast, { Toaster } from 'react-hot-toast';
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
 
 export default function Page() {
 
-    // redireccionamiento de rutas automatico
-    const router = useRouter()
-    
-    // constantes de react hook form para validaciones, errores, variables, resetear formulario
+    const router = useRouter();
     const { 
         register, 
         handleSubmit, 
@@ -20,35 +18,107 @@ export default function Page() {
         formState: { errors } 
     } = useForm();
 
-    // funcion de crear coleccion
+    // Función 1: Crear el producto en su colección específica (nombreDeSeccion/nombreDeProducto)
+    const createProductInSection = async (data) => {
+        const seccion = data.Seccion.trim(); // Nombre de la colección
+        const producto = data.Producto.trim(); // ID del documento
 
-    const createCollection = async (data) => {
+        if (!seccion || !producto) {
+            toast.error("El nombre de la sección y del producto no pueden estar vacíos.");
+            throw new Error("El nombre de la sección y del producto no pueden estar vacíos.");
+        }
+
+        const productoRef = doc(db, seccion, producto);
+        await setDoc(productoRef, {
+            Precio: Number(data.Precio),
+            Imagen: data.Imagen?.[0]?.name || "Sin imagen" 
+        });
+    };
+
+    // Función 2: Añadir el nombre de la sección al array "Secciones" en "Tienda/Productos"
+    const addSectionToGlobalList = async (seccionName) => {
+        const trimmedSeccionName = seccionName.trim();
+        if (!trimmedSeccionName) {
+            console.warn("Nombre de sección inválido para añadir a la lista global.");
+            return; // No hacer nada si el nombre de la sección está vacío después de recortar espacios
+        }
+
+        const tiendaProductosRef = doc(db, "Tienda", "Productos"); // Ruta: /Tienda/Productos
+
         try {
-            const seccion = data.Seccion;
-            const producto = data.Producto;
+            const docSnap = await getDoc(tiendaProductosRef);
 
-            // Referencia directa: seccion (colección) > producto (documento)
-            const productoRef = doc(db, seccion, producto); // ¡Sin "Tienda"!
-
-            // Guardar producto en la colección de la sección
-            await setDoc(productoRef, {
-                Precio: Number(data.Precio),
-                Imagen: data.Imagen?.[0]?.name || "Sin imagen"
-            });
-    
-            toast.success("Producto y sección creados exitosamente!");
-            reset();
-    
+            if (docSnap.exists()) {
+                // El documento "Tienda/Productos" existe
+                const currentData = docSnap.data();
+                if (currentData && Array.isArray(currentData.Secciones)) {
+                    // El campo "Secciones" existe y es un array, usamos arrayUnion
+                    await updateDoc(tiendaProductosRef, {
+                        Secciones: arrayUnion(trimmedSeccionName) // arrayUnion evita duplicados
+                    });
+                } else {
+                    // El campo "Secciones" no existe o no es un array, lo creamos/reemplazamos
+                    await updateDoc(tiendaProductosRef, { // O setDoc con { merge: true } si es preferible
+                        Secciones: [trimmedSeccionName]
+                    });
+                    toast.warn(`Campo 'Secciones' en 'Tienda/Productos' inicializado/corregido con la nueva sección.`);
+                }
+            } else {
+                // El documento "Tienda/Productos" no existe, lo creamos con el array "Secciones"
+                await setDoc(tiendaProductosRef, {
+                    Secciones: [trimmedSeccionName]
+                });
+                toast.info(`Documento 'Tienda/Productos' creado con la sección '${trimmedSeccionName}'.`);
+            }
         } catch (error) {
-            console.error("Error al crear el producto y/o actualizar secciones:", error);
-            toast.error("Error al crear el producto");
+            console.error("Error al actualizar la lista global de secciones:", error);
+            // Re-lanzamos el error para que sea capturado por el manejador principal y muestre un toast de error.
+            throw new Error("Error al actualizar la lista global de secciones."); 
+        }
+    };
+
+    // Manejador principal del envío del formulario
+    const handleFormSubmit = async (data) => {
+        let productCreatedSuccessfully = false;
+
+        try {
+            // Intenta crear el producto en su colección
+            await createProductInSection(data);
+            toast.success(`¡Producto "${data.Producto}" creado en la sección "${data.Seccion}" exitosamente!`);
+            productCreatedSuccessfully = true;
+        } catch (error) {
+            console.error("Error en createProductInSection:", error.message);
+            // El toast de error ya se maneja dentro de createProductInSection si es un error de campos vacíos,
+            // o aquí si es otro tipo de error.
+            if (error.message !== "El nombre de la sección y del producto no pueden estar vacíos.") {
+                 toast.error(`Error al crear el producto: ${error.message}`);
+            }
+        }
+
+        // Si el producto se creó (o al menos se intentó y el nombre de sección es válido),
+        // intenta añadir la sección a la lista global.
+        if (data.Seccion && data.Seccion.trim() !== "") {
+            try {
+                await addSectionToGlobalList(data.Seccion);
+                toast.success(`Sección "${data.Seccion}" actualizada en la lista general 'Tienda/Productos'.`);
+            } catch (error) {
+                console.error("Error en addSectionToGlobalList:", error.message);
+                toast.error(error.message || "Error al actualizar la lista de secciones.");
+            }
+        } else if (productCreatedSuccessfully) {
+            // Si el producto se creó pero la sección estaba vacía para la lista global
+            toast.warn("El nombre de la sección estaba vacío, no se añadió a la lista global.");
+        }
+        
+        if (productCreatedSuccessfully) {
+            reset(); // Resetea los campos del formulario si el producto principal se creó
         }
     };
 
     const handleLogout = () => {
-        router.push("/pages/Admin/View")
-    }
-
+        router.push("/pages/Admin/View"); 
+    };
+    
     return (
         <div className='w-screen h-screen flex justify-center items-center'>
             <button 
@@ -60,7 +130,7 @@ export default function Page() {
 
             <Toaster />
             <form 
-                onSubmit={handleSubmit(createCollection)}
+                onSubmit={handleSubmit(handleFormSubmit)} 
                 className='bg-[#e7e7e7] w-2/4 mx-auto shadow-1 rounded-xl border-[1px] border-[#222] py-8 px-12'
             >
                 <p className='uppercase font-bold text-3xl text-center mb-8'>Crear nueva sección</p>
