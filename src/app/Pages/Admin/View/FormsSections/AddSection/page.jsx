@@ -3,10 +3,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { db } from '@/Libs/firebase'; // Asegúrate que esta ruta sea correcta para tu configuración de Firebase
-// Importaciones de Firestore actualizadas
-import { doc, setDoc, updateDoc, arrayUnion, getDoc } from 'firebase/firestore'; 
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from "next/navigation";
+// Importaciones de Firestore actualizadas
+import { doc, setDoc, updateDoc, arrayUnion, getDoc } from 'firebase/firestore'; 
 
 export default function Page() {
 
@@ -78,7 +78,7 @@ export default function Page() {
     };
 
     // Manejador principal del envío del formulario
-    const handleFormSubmit = async (data) => {
+    const funciones = async (data) => {
         let productCreatedSuccessfully = false;
 
         try {
@@ -130,7 +130,7 @@ export default function Page() {
 
             <Toaster />
             <form 
-                onSubmit={handleSubmit(handleFormSubmit)} 
+                onSubmit={handleSubmit(funciones)} 
                 className='bg-[#e7e7e7] w-2/4 mx-auto shadow-1 rounded-xl border-[1px] border-[#222] py-8 px-12'
             >
                 <p className='uppercase font-bold text-3xl text-center mb-8'>Crear nueva sección</p>
