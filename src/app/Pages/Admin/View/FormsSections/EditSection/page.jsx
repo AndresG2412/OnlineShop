@@ -23,6 +23,8 @@ export default function page() {
         router.push("/pages/Admin/View")
     }
 
+    // racha
+
     return (
         <div className='w-screen h-screen flex items-center justify-center'>
             <button 
