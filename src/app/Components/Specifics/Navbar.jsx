@@ -9,7 +9,7 @@ import { ROUTES } from '@/routes';
 export default function Navbar() {
   
   return (
-    <div className='h-16 w-full bg-transparent shadow-1 fixed top-0 left-0 flex justify-between items-center border-b-[1px] border-[#fff] z-50 backdrop-blur-sm'>
+    <div className='h-16 w-full bg-[#111] shadow-1 fixed top-0 left-0 flex justify-between items-center border-b-[1px] border-[#fff] z-50 backdrop-blur-sm'>
       <Link href={ROUTES.ADMIN}>
         <Image 
           width={40}

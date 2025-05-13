@@ -51,11 +51,11 @@ export default function Main() {
     <div className="flex flex-col gap-4 items-center mt-24">
       <Busqueda />
 
-      <div className="md:w-5/6 pb-12">
+      <div className="w-5/6 pb-12">
         {secciones.map((seccion) => (
           <div key={seccion} className="w-full">
             <Section nombre={seccion} />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {productos[seccion]?.map((producto) => (
                 <Card key={producto.id} titulo={producto.titulo} precio={producto.precio} />
               ))}
