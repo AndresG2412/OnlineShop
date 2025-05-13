@@ -8,8 +8,8 @@ export default function Busqueda() {
     const [searchTerm, setSearchTerm] = useState("");
     
     return (
-        <>
-            <div className="InputContainer mx-auto mb-8">
+        <div className=''>
+            <div className="InputContainer w-80 mx-auto mb-8">
                 <input
                     placeholder="Search"
                     id="input"
@@ -27,6 +27,6 @@ export default function Busqueda() {
                     </svg>
                 </label>
             </div>
-        </>
+        </div>
     )
 }
