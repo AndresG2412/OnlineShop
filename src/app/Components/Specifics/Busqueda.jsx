@@ -8,7 +8,7 @@ export default function Busqueda() {
     const [searchTerm, setSearchTerm] = useState("");
     
     return (
-        <div className=''>
+        <div className='animate-slide-in-top'>
             <div className="InputContainer w-80 mx-auto mb-8">
                 <input
                     placeholder="Search"
