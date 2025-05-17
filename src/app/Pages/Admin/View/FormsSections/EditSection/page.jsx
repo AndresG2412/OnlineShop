@@ -170,35 +170,26 @@ export default function page() {
                 <p className='uppercase font-bold text-3xl text-center mb-8'>Edición de secciones</p>
 
                 {/* Seleccionar la sección */}
-                <div className={`mx-auto w-3/4 flex mb-4 flex-col gap-2 ${errors.sectionToEdit ? "mb-2" : "mb-4"}`}>
+                <div className={`mx-auto w-3/4 flex flex-col gap-2 mb-6 ${errors.sectionToEdit ? "mb-4" : "mb-6"}`}>
                     <label htmlFor="sectionToEdit" className="font-semibold text-xl text-gray-800">Seleccione la sección</label>
                     {isFetchingSecciones ? (
                         <p className="text-gray-600">Cargando secciones...</p>
                     ) : (
-                        <div className='w-full'>
-                            <select
-                                id="sectionToEdit"
-                                {...register("sectionToEdit", { required: "Debe seleccionar una sección." })}
-                                className='w-full h-10 bg-blue-200 rounded-lg pl-2 tracking-wider border border-black'
-                                disabled={isLoading || secciones.length === 0}
-                                defaultValue=""
-                            >
-                                <option value="">
-                                    {secciones.length === 0 ? "No hay secciones disponibles" : "-- Elija una sección --"}
-                                </option>
-                                {secciones.map(seccion => (
-                                    <option key={seccion} value={seccion}>
-                                        {seccion}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        <select
+                            id="sectionToEdit"
+                            name="secciones"
+                            className='bg-white'
+                            {...register("sectionToEdit", { required: "Debe seleccionar una sección." })}
+                        >
+                            {secciones.map(seccion => (
+                                <option key={seccion} value={seccion}>{seccion}</option>
+                            ))}
+                        </select>
                     )}
                     {errors.sectionToEdit && (
                         <span className='text-red-500'>{errors.sectionToEdit.message}</span>
                     )}
                 </div>
-
 
                 {/* Input para el nuevo nombre de la sección */}
                 {/* El error se asocia a 'newSectionName' */}
