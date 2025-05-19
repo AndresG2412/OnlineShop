@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @plugin "@midudev/tailwind-animations";
 
+.no-seleccionable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Estándar */
+}
+
 body{
   background-color: #09071b;
 

@@ -48,7 +48,7 @@ export default function Main() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4 items-center mt-24">
+    <div className="flex flex-col gap-4 items-center mt-24 no-seleccionable">
       <Busqueda />
 
       <div className="w-5/6 pb-12">
