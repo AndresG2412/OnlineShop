@@ -12,7 +12,7 @@ export default function Navbar() {
     <div className='h-16 w-full bg-[#111] shadow-1 fixed top-0 left-0 flex justify-between items-center border-b-[1px] border-[#fff] z-50 backdrop-blur-sm'>
       <Link href={ROUTES.ADMIN}>
         <Image 
-        Width={40}
+          width={40}
           height={40}
           src="https://cdn-icons-png.flaticon.com/128/18921/18921642.png" className='invert mx-4 hover:scale-110 hover:transition-all' alt='user_logo'/>
       </Link>

@@ -74,7 +74,7 @@ export default function AdminView() {
             </div> */}
 
             <div className="flex justify-center p-4">
-                <div className="grid gap-4 grid-cols-2 max-w-md"> {/* Ajusta max-w-md según tu necesidad */}
+                <div className="grid gap-4 grid-cols-2 max-w-md">
                     {imagenes.map((imagen) => (
                     <OptionsAdmin 
                         key={imagen.id}
