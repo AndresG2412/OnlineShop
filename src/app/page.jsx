@@ -55,7 +55,7 @@ export default function Main() {
         {secciones.map((seccion) => (
           <div key={seccion} className="w-full">
             <Section nombre={seccion} />
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
               {productos[seccion]?.map((producto) => (
                 <Card key={producto.id} titulo={producto.titulo} precio={producto.precio} />
               ))}
