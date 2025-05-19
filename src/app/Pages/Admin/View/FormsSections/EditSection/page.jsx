@@ -191,9 +191,6 @@ export default function page() {
                     )}
                 </div>
 
-                {/* Input para el nuevo nombre de la sección */}
-                {/* El error se asocia a 'newSectionName' */}
-                {/* Etiqueta y placeholder actualizados para reflejar la acción de editar sección */}
                 <div className={`mx-auto w-3/4 flex mb-4 flex-col gap-2 ${errors.newSectionName ? "mb-2" : "mb-4"}`}>
                     <label htmlFor="newSectionName" className="font-semibold text-xl text-gray-800">Nuevo nombre para la sección</label>
                     <input
