@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'; // Añadido useState y useEffect
 import { useForm } from 'react-hook-form';
-import { db } from '@/Libs/firebase'; // Asegúrate que esta ruta sea correcta
+import { db } from '@/Libs/firebase';
 // Importaciones necesarias de Firestore
 import { 
     doc, 
@@ -15,7 +15,6 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from "next/navigation";
 
-// Manteniendo el nombre 'page' como lo tienes
 export default function page() {
     const router = useRouter();
     const [secciones, setSecciones] = useState([]); // Para la lista del dropdown

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { db } from '@/Libs/firebase'; // Asegúrate que esta ruta sea correcta para tu configuración de Firebase
+import { db } from '@/Libs/firebase';
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from "next/navigation";
 // Importaciones de Firestore actualizadas
