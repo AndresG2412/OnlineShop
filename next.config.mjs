@@ -4,8 +4,8 @@ const nextConfig = {
     images: {
         domains: [
           'cdn-icons-png.flaticon.com',
-          'firebasestorage.googleapis.com', // Para imágenes de Firebase Storage
-          'example.com', // Otro dominio que uses
+          'firebasestorage.googleapis.com',
+          'res.cloudinary.com',
         ],
     },
 }

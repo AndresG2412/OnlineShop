@@ -34,8 +34,9 @@ export default function Main() {
             const prodData = doc.data();
             return {
               id: doc.id,
-              titulo: doc.id,          // ✅ Cambiado a ID del documento como titulo
-              precio: prodData.Precio, // ✅ Mantienes el precio como campo
+              titulo: doc.id,
+              precio: prodData.Precio,
+              imageLink: prodData.Imagen,
             };
           });
         }
@@ -55,9 +56,9 @@ export default function Main() {
         {secciones.map((seccion) => (
           <div key={seccion} className="w-full">
             <Section nombre={seccion} />
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
               {productos[seccion]?.map((producto) => (
-                <Card key={producto.id} titulo={producto.titulo} precio={producto.precio} />
+                <Card key={producto.id} titulo={producto.titulo} precio={producto.precio} imageLink={producto.imageLink}/>
               ))}
             </div>
           </div>

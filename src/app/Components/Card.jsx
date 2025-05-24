@@ -1,10 +1,18 @@
 import React from 'react';
+import Image from 'next/image';
 
-export default function Card({ titulo, precio }) {
+export default function Card({ titulo, precio, imageLink }) {
     return (
         <div className='group h-full'>
             <div className='group-hover:scale-105 group-hover:duration-300 animate-zoom-in flex relative flex-col gap-y-4 justify-center h-full bg-white rounded-lg shadow-lg w-full py-4'>
-                <div className='hover:animate-pulsing h-32 w-32 bg-red-200 rounded-xl shadow-2xl mx-auto'></div>
+                <div className='hover:animate-pulsing h-32 w-32 bg-red-200 rounded-xl shadow-2xl mx-auto'>
+                    <Image
+                        src={'https://res.cloudinary.com/duwosb0hu/image/upload/v1745037571/rata1_bblpf1.png'}
+                        alt={titulo}
+                        width={128}
+                        height={128}
+                        className='rounded-xl object-cover w-full h-full'/>
+                </div>
                 <p className='uppercase tracking-wide font-semibold text-xl px-6 overflow-hidden whitespace-nowrap text-ellipsis'>{titulo}</p>
                 <hr className='mx-6 border-1 border-black'></hr>
                 <div className='flex items-center justify-between w-full px-6'>
