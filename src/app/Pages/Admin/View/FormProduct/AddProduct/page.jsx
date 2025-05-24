@@ -116,6 +116,9 @@ export default function page() {
                 onSubmit={handleSubmit(handleEditSubmit)} // Cambiado al nuevo manejador
                 className='bg-[#e7e7e7] w-2/4 mx-auto shadow-1 rounded-xl border-[1px] border-[#222] py-8 px-12'
             >
+
+                <p className='uppercase font-bold text-3xl text-center mb-8'>Añadir un Producto</p>
+
                 {/* Seleccionar la sección */}
                 <div className={`mx-auto w-3/4 flex flex-col gap-2 mb-6 ${errors.sectionToEdit ? "mb-4" : "mb-6"}`}>
                     <label htmlFor="sectionToEdit" className="font-semibold text-xl text-gray-800">Seleccione la sección</label>
