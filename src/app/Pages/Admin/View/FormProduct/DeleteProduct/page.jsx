@@ -64,43 +64,7 @@ export default function page() {
     }, []);
 
     // Nuevo useEffect para cargar productos cuando cambie la sección seleccionada
-    useEffect(() => {
-        const fetchProductosBySeccion = async (seccion) => {
-            if (!seccion) {
-                setProductos([]); // Limpiar productos si no hay sección seleccionada
-                return;
-            }
-
-            setIsFetchingProductos(true);
-            try {
-                // Referencia a la subcolección dentro de "Productos" con el nombre de la sección
-                const productosRef = collection(db, "Tienda", "Productos", seccion);
-                const querySnapshot = await getDocs(productosRef);
-                const productosData = querySnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
-                // Opcional: ordenar productos si tienen un campo de nombre
-                setProductos(productosData.sort((a, b) => (a.nombre || "").localeCompare(b.nombre || "")));
-            } catch (error) {
-                console.error(`Error al cargar productos de la sección "${seccion}":`, error);
-                toast.error(`No se pudieron cargar los productos de la sección "${seccion}".`);
-                setProductos([]);
-            } finally {
-                setIsFetchingProductos(false);
-            }
-        };
-
-        // Actualiza el estado de la sección seleccionada y luego carga los productos
-        if (sectionToWatch) {
-            setSeccionSeleccionada(sectionToWatch);
-            fetchProductosBySeccion(sectionToWatch);
-        } else {
-            setSeccionSeleccionada('');
-            setProductos([]);
-        }
-
-    }, [sectionToWatch]); // Este useEffect se ejecutará cada vez que 'sectionToWatch' cambie
+    useEffect(() => {}, []);
 
     const handleLogout = () => {
         router.push("/pages/Admin/View"); // Ajusta esta ruta si es necesario
@@ -162,32 +126,7 @@ export default function page() {
                     )}
                 </div>
 
-                {/* Selector de productos */}
-                {seccionSeleccionada && ( // Solo muestra el selector de productos si hay una sección seleccionada
-                    <div className={`mx-auto w-3/4 flex flex-col gap-2 mb-6 ${errors.productToEdit ? "mb-4" : "mb-6"}`}>
-                        <label htmlFor="productToEdit" className="font-semibold text-xl text-gray-800">Seleccione el producto</label>
-                        {isFetchingProductos ? (
-                            <p className="text-gray-600">Cargando productos...</p>
-                        ) : productos.length > 0 ? (
-                            <select
-                                id="productToEdit"
-                                name="productos"
-                                className='bg-white'
-                                {...register("productToEdit", { required: "Debe seleccionar un producto." })}
-                            >
-                                <option value="">-- Seleccione un producto --</option>
-                                {productos.map(producto => (
-                                    <option key={producto.id} value={producto.id}>{producto.nombre || producto.id}</option>
-                                ))}
-                            </select>
-                        ) : (
-                            <p className="text-gray-600">No hay productos en esta sección.</p>
-                        )}
-                        {errors.productToEdit && (
-                            <span className='text-red-500'>{errors.productToEdit.message}</span>
-                        )}
-                    </div>
-                )}
+                {/* Selector de productos de la seccion seleciconadda*/}
 
             </form>
         </div>
