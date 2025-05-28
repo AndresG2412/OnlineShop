@@ -108,10 +108,10 @@ export default function Login() {
         <div className='h-screen flex items-center'>
             <div className="mx-auto w-full md:w-1/2 px-4">
                 <form
-                    className="min-h-96 px-8 py-6 mt-4 text-left bg-gray-800 rounded-xl shadow-lg"
+                    className="min-h-96 md:px-8 py-6 mt-4 text-left bg-gray-800 rounded-xl shadow-lg"
                     onSubmit={handleSubmit(onSubmit)}>
-                    <div className="flex flex-col justify-center items-center h-full select-none">
-                        <div className="flex items-center justify-center gap-2 mb-8">
+                    <div className="flex flex-col justify-center items-center h-full select-none w-full">
+                        <div className="flex items-center justify-center gap-2 mb-8 w-full">
                             <Image 
                                 width={100}
                                 height={100}
@@ -121,11 +121,11 @@ export default function Login() {
                                 priority
                             />
 
-                            <div className=''>
-                                <p className="m-0 text-3xl tracking-widest uppercase font-semibold dark:text-white">
+                            <div className="">
+                                <p className="m-0 text-2xl md:text-3xl tracking-widest uppercase font-semibold dark:text-white">
                                     Bienvenido
                                 </p>
-                                <p className="m-0 text-5xl tracking-wider uppercase font-semibold dark:text-white">
+                                <p className="m-0 text-4xl md:text-5xl tracking-wider uppercase font-semibold dark:text-white">
                                     De vuelta
                                 </p>
                             </div>
@@ -179,7 +179,7 @@ export default function Login() {
                     </div>
                     
                     {/* Botón de Submit */}
-                    <div className='flex flex-col w-full md:w-2/4 justify-center mx-auto'>
+                    <div className='flex flex-col w-3/4 md:w-2/4 justify-center mx-auto'>
                         <button
                             disabled={loading}
                             className={`tracking-wider w-full py-1 mb-4 px-8 ${
@@ -197,7 +197,7 @@ export default function Login() {
 
                 </form>
                     {/* Enlace alternativo */}
-                    <p className='hover:scale-110 hover:duration-300 text-red-500 tracking-wider text-lg text-center'>
+                    <p className='hover:scale-110 hover:duration-300 text-red-500 tracking-wider text-lg text-center mt-12'>
                         <Link href={ROUTES.ADMIN}>¿No tienes una cuenta?</Link>
                     </p>
             </div>
