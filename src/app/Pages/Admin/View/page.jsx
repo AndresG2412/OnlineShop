@@ -74,6 +74,7 @@ export default function AdminView() {
             </div>
 
             {/* aqui van las opciones en forma de tabla */}
+            {/* racha */}
         </div>
     )
 }
