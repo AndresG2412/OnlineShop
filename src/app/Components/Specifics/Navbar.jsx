@@ -31,7 +31,7 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Menú desktop - oculto en móvil */}
+        {/* Menú desktop - oculto en móvil
         <div className='hidden md:flex mr-8 gap-x-8'>
           <div className='flex items-center gap-x-2 hover:duration-300 hover:scale-110 hover:transition-all'>
             <Link className='uppercase text-white font-bold text-2xl tracking-widest' href={ROUTES.HOME}>
@@ -49,12 +49,12 @@ export default function Navbar() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
             </svg>
           </div>
-        </div>
+        </div> */}
 
-        {/* Botón hamburguesa - visible solo en móvil */}
+        {/* Botón hamburguesa*/}
         <button 
           onClick={toggleMenu}
-          className='md:hidden mr-4 p-2 focus:outline-none'
+          className='mr-4 p-2 focus:outline-none'
           aria-label="Toggle menu"
         >
           <div className="relative w-6 h-6 flex flex-col justify-center items-center">
@@ -70,7 +70,7 @@ export default function Navbar() {
             />
             <span 
               className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
-                isMenuOpen ? '-rotate-45 -translate-y-0.5' : 'translate-y-1.5'
+                isMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1.5'
               }`}
             />
           </div>
@@ -79,7 +79,7 @@ export default function Navbar() {
 
       {/* Overlay del menú móvil */}
       <div 
-        className={`fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 bg-opacity-50 z-40 transition-all duration-300 ease-in-out md:w-1/4 ${
           isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
         onClick={closeMenu}
@@ -87,7 +87,7 @@ export default function Navbar() {
 
       {/* Menú móvil */}
       <div 
-        className={`fixed top-0 right-0 h-full w-full bg-[#111] z-50 md:hidden transform transition-all duration-500 ease-out ${
+        className={`fixed top-0 right-0 h-full w-full bg-[#111] z-50 transform transition-all duration-500 ease-out md:w-1/4 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
