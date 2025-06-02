@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { db } from "../Libs/firebase"
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 
-import Busqueda from "./components/Specifics/Busqueda";
 import Card from "./components/Card"; // producto unitario, recibe parametros de "titulo" y "precio"
 import Section from "./components/Sections"; // titulo de la seccion de un producto especifico, recibe parametro de "nombre"
+import Assets from "./components/Specifics/Assets";
 
 export default function Main() {
   const [secciones, setSecciones] = useState([]);
@@ -50,7 +50,7 @@ export default function Main() {
 
   return (
     <div className="flex flex-col gap-4 items-center mt-24 no-seleccionable">
-      <Busqueda />
+      <Assets />
 
       <div className="w-5/6 pb-12">
         {secciones.map((seccion) => (
