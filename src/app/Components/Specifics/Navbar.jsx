@@ -172,10 +172,33 @@ export default function Navbar() {
               </svg>
               <Link 
                 className='uppercase text-white font-bold text-3xl tracking-widest group-hover:text-purple-500 group-hover:duration-300 transition-colors duration-300' 
-                href={ROUTES.CART}
+                href={ROUTES.CAR}
                 onClick={closeMenu}
               >
                 Carrito
+              </Link>
+            </div>
+          </div>
+
+        {/* Item Ofertas */}
+          <div 
+            className={`group flex flex-col items-center space-y-4 transform transition-all duration-700 ease-out ${
+              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}
+            style={{ transitionDelay: isMenuOpen ? '400ms' : '0ms' }}
+          >
+            <div className='flex items-center justify-center space-x-3'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="scale-125 text-white group-hover:text-purple-500 group-hover:duration-300 animate-bounce-alt">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6Z" />
+              </svg>
+
+              <Link 
+                className='uppercase text-white font-bold text-3xl tracking-widest group-hover:text-purple-500 group-hover:duration-300 transition-colors duration-300' 
+                href={ROUTES.CAR}
+                onClick={closeMenu}
+              >
+                Ofertas
               </Link>
             </div>
           </div>
