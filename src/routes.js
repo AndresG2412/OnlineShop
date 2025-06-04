@@ -1,5 +1,7 @@
 export const ROUTES = {
   HOME: '/',
-  CART: '/pages/Shop',
+  CAR: '/pages/Car',
   ADMIN: '/pages/Admin',
+  PROM: '/pages/Prom',
+  LIKE: '/pages/Like',
 };
