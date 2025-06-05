@@ -32,12 +32,14 @@ export default function Navbar() {
           />
         </Link>
 
-        <Image
-          height={50}
-          src={logo}
-          className='hidden md:block'
-          alt='logo'
-        />
+        <Link href={ROUTES.HOME}>
+          <Image
+            height={50}
+            src={logo}
+            className='hidden md:block'
+            alt='logo'
+          />
+        </Link>
 
         {/* Botón hamburguesa*/}
         <button 
@@ -151,7 +153,7 @@ export default function Navbar() {
 
               <Link 
                 className='uppercase text-white font-bold text-3xl tracking-widest group-hover:text-purple-500 group-hover:duration-300 transition-colors duration-300' 
-                href={ROUTES.HOME}
+                href={ROUTES.LIKE}
                 onClick={closeMenu}
               >
                 Favoritos
@@ -195,7 +197,7 @@ export default function Navbar() {
 
               <Link 
                 className='uppercase text-white font-bold text-3xl tracking-widest group-hover:text-purple-500 group-hover:duration-300 transition-colors duration-300' 
-                href={ROUTES.CAR}
+                href={ROUTES.PROM}
                 onClick={closeMenu}
               >
                 Ofertas
