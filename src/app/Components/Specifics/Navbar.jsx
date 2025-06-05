@@ -110,7 +110,7 @@ export default function Navbar() {
               </svg>
               <Link 
                 className='uppercase text-white font-bold text-3xl tracking-widest group-hover:text-purple-500 group-hover:duration-300 transition-colors duration-300' 
-                href={ROUTES.ADMIN}
+                href={ROUTES.FORMS}
                 onClick={closeMenu}
               >
                 Cuenta
