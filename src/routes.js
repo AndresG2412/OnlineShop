@@ -4,4 +4,5 @@ export const ROUTES = {
   ADMIN: '/pages/Admin',
   PROM: '/pages/Prom',
   LIKE: '/pages/Like',
+  FORMS: '/pages/Register',
 };
