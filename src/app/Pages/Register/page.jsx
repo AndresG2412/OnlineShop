@@ -59,6 +59,8 @@ export default function Page() {
             <a className={`${!viewForm ? "block" : "hidden"} z-2 text-white font-bold text-lg tracking-wider w-1/2 mx-auto hover:text-red-600 hover:cursor-pointer p-2 mt-4 rounded-lg text-center`} onClick={() => setViewForm(true)}>
                 ¿No tienes cuenta? Crear Cuenta
             </a>
+
+            {/* racha */}
         </div>
     )
 }
