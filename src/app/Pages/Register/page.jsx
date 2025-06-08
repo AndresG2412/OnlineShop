@@ -61,7 +61,6 @@ export default function Page() {
             </a>
 
             {/* racha */}
-            {/* debo usar el formulario ya creado */}
         </div>
     )
 }
