@@ -126,7 +126,7 @@ export default function Login() {
                                     Bienvenido
                                 </p>
                                 <p className="m-0 text-4xl md:text-5xl tracking-wider uppercase font-semibold dark:text-white">
-                                    De vuelta
+                                    Al registro
                                 </p>
                             </div>
                         </div>
@@ -177,6 +177,27 @@ export default function Login() {
                             )}
                         </div>
                     </div>
+
+                    {/* Campo de Edad */}
+                        <div className={`w-3/4 flex flex-col gap-2 ${errors.Edad ? "mb-2" : "mb-4"}`}>
+                            <label className="font-semibold text-xl text-gray-400 text-center">Fecha de nacimiento</label>
+                            <input
+                                {...register("Edad", {
+                                    required: "La fecha es requerida!",
+                                    pattern: {
+                                        message: "Fecha ingresada invalida"
+                                    }
+                                })}
+                                type="date" 
+                                className='w-full h-8 bg-white rounded-lg pl-2 tracking-wider'
+                                autoComplete='off'
+                                disabled={loading}
+                            />
+                            
+                            {errors.Edad && (
+                                <span className='text-red-500'>{errors.Edad.message}</span>
+                            )}
+                        </div>
                     
                     {/* Botón de Submit */}
                     <div className='flex gap-x-5 w-3/4 md:w-2/4 justify-center mx-auto'>
