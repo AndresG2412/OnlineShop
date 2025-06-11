@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { db } from "../Libs/firebase"
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import Link from "next/link";
 
 import Card from "./components/Card"; // producto unitario, recibe parametros de "titulo" y "precio"
 import Section from "./components/Sections"; // titulo de la seccion de un producto especifico, recibe parametro de "nombre"
@@ -58,7 +59,12 @@ export default function Main() {
             <Section nombre={seccion} />
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
               {productos[seccion]?.map((producto) => (
-                <Card key={producto.id} titulo={producto.titulo} precio={producto.precio} imageLink={producto.imageLink}/>
+                  <Card 
+                    key={producto.id}
+                    titulo={producto.titulo} 
+                    precio={producto.precio} 
+                    imageLink={producto.imageLink}
+                  />
               ))}
             </div>
           </div>
