@@ -35,6 +35,7 @@ export default function Main() {
             const prodData = doc.data();
             return {
               id: doc.id,
+              nombre: prodData.Nombre || "", // Asegúrate de que el campo sea exactamente "Nombre"
               titulo: doc.id,
               precio: prodData.Precio,
               imageLink: prodData.Imagen,
@@ -59,12 +60,17 @@ export default function Main() {
             <Section nombre={seccion} />
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
               {productos[seccion]?.map((producto) => (
+                <Link
+                  key={producto.id}
+                  href={`./pages/${producto.id}`}
+                  passHref
+                >
                   <Card 
-                    key={producto.id}
-                    titulo={producto.titulo} 
+                    titulo={producto.nombre} 
                     precio={producto.precio} 
                     imageLink={producto.imageLink}
                   />
+                </Link>
               ))}
             </div>
           </div>
