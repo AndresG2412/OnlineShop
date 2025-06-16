@@ -72,6 +72,10 @@ export default function Producto() {
                             <div className={`w-10 h-10 flex items-center justify-center rounded-sm font-semibold border-dashed border-3 border-black ${producto.tallaL ? "bg-green-200" : "bg-red-200"}`}>L</div>
                             <div className={`w-10 h-10 flex items-center justify-center rounded-sm font-semibold border-dashed border-3 border-black ${producto.tallaXL ? "bg-green-200" : "bg-red-200"}`}>XL</div>
                         </div>
+
+                    {/* poner carrito, like, unidades disponibles aun, tiempo limitado, por temporada, etc.
+
+                    poner vista el celular */}
                     </div>
                 </div>
             </div>
