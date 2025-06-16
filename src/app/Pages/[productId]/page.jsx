@@ -30,6 +30,11 @@ export default function Producto() {
                         id: productId,
                         titulo: productoSnap.data().Nombre,
                         precio: productoSnap.data().Precio,
+                        tallaS: productoSnap.data().TallaS,
+                        tallaM: productoSnap.data().TallaM,
+                        tallaL: productoSnap.data().TallaL,
+                        tallaXL: productoSnap.data().TallaXL,
+                        unidades: productoSnap.data().Unidades,
                     });
                     setLoading(false);
                     return;
@@ -44,9 +49,26 @@ export default function Producto() {
     if (!producto) return <div>Producto no encontrado</div>;
 
     return (
-        <div className="text-white flex flex-col items-center mt-24">
-            <h1 className="text-3xl font-bold mb-4">{producto.titulo}</h1>
-            <p className="text-xl">Precio: ${producto.precio}</p>
+        <div className="text-black  w-screen flex items-center justify-center mt-24">
+            
+            <div className="bg-white p-6 rounded-xs w-2/3">
+                <div>
+
+                </div>
+
+                <div>
+                    <h1 className="text-3xl font-bold mb-4">{producto.titulo}</h1>
+                    <p className="text-xl">Precio: ${producto.precio}</p>
+                    <p>Tallas Disponibles:</p>
+                        <div className="mt-2 flex gap-x-3 items-center">
+                            <div className={`w-8 h-8 flex items-center justify-center rounded-sm font-semibold border-dashed border-3 border-black ${producto.tallaS ? "bg-green-200" : "bg-red-200"}`}>S</div>
+                            <div className={`w-8 h-8 flex items-center justify-center rounded-sm font-semibold border-dashed border-3 border-black ${producto.tallaM ? "bg-green-200" : "bg-red-200"}`}>M</div>
+                            <div className={`w-8 h-8 flex items-center justify-center rounded-sm font-semibold border-dashed border-3 border-black ${producto.tallaL ? "bg-green-200" : "bg-red-200"}`}>L</div>
+                            <div className={`w-8 h-8 flex items-center justify-center rounded-sm font-semibold border-dashed border-3 border-black ${producto.tallaXL ? "bg-green-200" : "bg-red-200"}`}>XL</div>
+                        </div>
+                </div>
+            </div>
+
         </div>
     );
 }
