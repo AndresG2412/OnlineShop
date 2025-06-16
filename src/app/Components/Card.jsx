@@ -6,7 +6,7 @@ export default function Card({ titulo, precio, imageLink }) {
     return (
         <div className='group h-full'>
             <div className='group-hover:scale-105 group-hover:duration-300 animate-zoom-in flex relative flex-col gap-y-4 justify-center h-full bg-white rounded-lg shadow-lg w-full py-4'>
-                <div className='hover:animate-pulsing h-32 w-32 bg-red-200 rounded-xl shadow-2xl mx-auto'>
+                <div className='h-32 w-32 bg-red-200 rounded-xl shadow-2xl mx-auto'>
                     <Image
                         src={'https://res.cloudinary.com/duwosb0hu/image/upload/v1745037571/rata1_bblpf1.png'}
                         alt={titulo}
@@ -17,7 +17,7 @@ export default function Card({ titulo, precio, imageLink }) {
                 <p className='uppercase tracking-wide font-semibold text-xl px-6 overflow-hidden whitespace-nowrap text-ellipsis'>{titulo}</p>
                 <hr className='mx-6 border-1 border-black'></hr>
 
-                {/* celular */}
+                {/* datos de articulo para celular */}
                 <div className='md:hidden flex flex-col gap-y-3 items-center justify-between w-full px-6'>
                     <p className='tracking-wide md:tracking-widest font-semibold text-xl'>${precio}</p>
                     <div className='flex items-center gap-x-4'>
@@ -38,7 +38,7 @@ export default function Card({ titulo, precio, imageLink }) {
                     </div>
                 </div>
 
-                {/* computador */}
+                {/* datos de articulo para computador */}
                 <div className='hidden md:flex items-center justify-between w-full px-6'>
                     <p className='tracking-wide md:tracking-widest font-semibold text-xl'>${precio}</p>
                     <div className='flex items-center gap-x-4'>
