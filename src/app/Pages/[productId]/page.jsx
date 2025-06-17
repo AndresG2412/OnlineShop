@@ -6,6 +6,9 @@ import { db } from "../../../Libs/firebase";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import Image from "next/image";
 
+import Link from "next/link";
+import { ROUTES } from "@/routes";
+
 export default function Producto() {
     const { productId } = useParams();
     const [producto, setProducto] = useState(null);
@@ -52,7 +55,14 @@ export default function Producto() {
     return (
         <div className="text-black w-screen flex items-center justify-center mt-24">
             
-            <div className="bg-white md:flex p-6 rounded-xs w-[90%] md:w-2/3">
+            <div className="bg-white md:flex p-6 rounded-xs w-[90%] md:w-2/3 relative">
+
+            <Link href={ROUTES.HOME} className="absolute top-2 left-2 w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center cursor-pointer hover:bg-gray-200 duration-300 hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                </svg>
+            </Link>
+
                 <Image
                     src={`https://res.cloudinary.com/duwosb0hu/image/upload/v1745037571/rata1_bblpf1.png`}
                     alt={producto.titulo}
