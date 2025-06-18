@@ -3,7 +3,8 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import logo from '../../images/CARO-SHOP1.webp'
+import logo from '../../images/LogoCompleto.png'
+import LogoCorto from "../../images/LogoCorto.png"
 
 import { ROUTES } from '@/routes';
 
@@ -22,29 +23,28 @@ export default function Navbar() {
     <>
       {/* Navbar principal */}
       <div className='h-16 w-full bg-[#111] shadow-1 fixed top-0 left-0 flex justify-between items-center border-b-[1px] border-[#fff] z-50 backdrop-blur-sm'>
-        <Link href={ROUTES.ADMIN}>
+        <Link href={ROUTES.HOME}>
           <Image 
-            width={40}
-            height={40}
-            src="https://cdn-icons-png.flaticon.com/128/18921/18921642.png" 
-            className='invert mx-4 hover:scale-110 hover:transition-all' 
+            height={50}
+            src={logo}
+            className='hidden md:block invert pl-4' 
             alt='user_logo'
           />
         </Link>
 
         <Link href={ROUTES.HOME}>
-          <Image
+          <Image 
             height={50}
-            src={logo}
-            className='hidden md:block'
-            alt='logo'
+            src={LogoCorto}
+            className='md:hidden block invert absolute left-1 top-1 scale-75' 
+            alt='user_logo'
           />
         </Link>
 
         {/* Botón hamburguesa*/}
         <button 
           onClick={toggleMenu}
-          className='mr-4 p-2 focus:outline-none'
+          className='hover:cursor-pointer mr-4 p-2 focus:outline-none'
           aria-label="Toggle menu"
         >
           <div className="relative w-6 h-6 flex flex-col justify-center items-center">
