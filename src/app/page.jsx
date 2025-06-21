@@ -5,7 +5,7 @@ import { db } from "../Libs/firebase"
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import Link from "next/link";
 
-import Card from "./components/Card"; // producto unitario, recibe parametros de "titulo" y "precio"
+import Card from "./components/Card"; // tarjeta de producto, recibe parametros de "titulo", "precio" e "imageLink"
 import Section from "./components/Sections"; // titulo de la seccion de un producto especifico, recibe parametro de "nombre"
 import Assets from "./components/Specifics/Assets";
 
