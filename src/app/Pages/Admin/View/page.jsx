@@ -8,8 +8,6 @@ import { db } from "@/Libs/firebase"
 // Agrega estas importaciones
 import { collection, getDocs, query, orderBy } from "firebase/firestore"
 
-import OptionsAdmin from '@/app/components/OptionsAdmin'
-
 export default function AdminView() {
     const router = useRouter()
     const [imagenes, setImagenes] = useState([])
@@ -69,23 +67,12 @@ export default function AdminView() {
                 CERRAR SESIÓN
             </button>
 
-            {/* <div className="p-4">
+            <div className="p-4">
                 <h1 className="text-2xl font-bold text-white">Panel de Administración</h1>
-            </div> */}
-
-            <div className="flex justify-center p-4">
-                <div className="grid gap-4 grid-cols-2 max-w-md">
-                    {imagenes.map((imagen) => (
-                    <OptionsAdmin 
-                        key={imagen.id}
-                        src={imagen.Imagen}
-                        titulo={imagen.Titulo}
-                        alt={imagen.Alt}
-                        ruta={imagen.Ruta}
-                    />
-                    ))}
-                </div>
             </div>
+
+            {/* aqui van las opciones en forma de tabla */}
+            {/* racha */}
         </div>
     )
 }

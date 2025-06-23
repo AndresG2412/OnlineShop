@@ -1,13 +1,27 @@
 /** @type {import('next').NextConfig} */
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: [
-          'cdn-icons-png.flaticon.com',
-          'firebasestorage.googleapis.com',
-          'res.cloudinary.com',
-        ],
-    },
-}
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn-icons-png.flaticon.com',
+        port: '',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '**',
+      },
+    ],
+  },
+};
 
 export default nextConfig;
