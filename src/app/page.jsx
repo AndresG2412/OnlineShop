@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { db } from "../Libs/firebase.js"; // Asegúrate de que la ruta sea correcta
+import { db } from "@/Libs/firebase.js"; // Asegúrate de que la ruta sea correcta
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import Link from "next/link";
 
