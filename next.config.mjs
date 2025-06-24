@@ -1,3 +1,5 @@
+import path from 'path'; // Usar import en vez de require
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -33,5 +35,4 @@ const nextConfig = {
   }
 };
 
-const path = require('path'); // Añade esto al inicio del archivo
 export default nextConfig;
