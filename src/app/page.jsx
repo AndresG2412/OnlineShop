@@ -5,9 +5,9 @@ import { db } from "@/Libs/firebase.js"; // Asegúrate de que la ruta sea correc
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import Link from "next/link";
 
-import Card from "@/app/components/Card.jsx"; // tarjeta de producto, recibe parametros de "titulo", "precio" e "imageLink"
-import Section from "@/app/components/Sections.jsx"; // titulo de la seccion de un producto especifico, recibe parametro de "nombre"
-import Assets from "@/app/components/Specifics/Assets.jsx";
+import Card from "@/app/components/Card.jsx"; // Asegúrate que coincida exactamente
+import Section from "@/app/components/Sections.jsx"; // Nota la 'S' mayúscula
+import Assets from "@/app/components/Specifics/Assets";
 
 export default function Main() {
   const [secciones, setSecciones] = useState([]);
