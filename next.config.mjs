@@ -1,3 +1,5 @@
+import path from 'path'; // Usar import en vez de require
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -22,6 +24,15 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, 'src'),
+      '@/app': path.resolve(__dirname, 'src/app'),
+      '@/components': path.resolve(__dirname, 'src/app/components'),
+    };
+    return config;
+  }
 };
 
 export default nextConfig;

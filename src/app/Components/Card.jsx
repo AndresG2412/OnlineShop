@@ -1,8 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
-export default function Card({ titulo, precio, imageLink }) {
+export default function Card({ titulo, precio }) {
     return (
         <div className='group h-full'>
             <div className='group-hover:scale-105 group-hover:duration-300 animate-zoom-in flex relative flex-col gap-y-4 justify-center h-full bg-white rounded-lg shadow-lg w-full py-4'>
