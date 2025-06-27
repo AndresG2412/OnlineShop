@@ -5,6 +5,8 @@ import { db } from "../Libs/firebase.js"; // Asegúrate de que la ruta sea corre
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import Link from "next/link";
 
+// necesitamos devolver todo a antes del error
+
 import Card from "../app/components/Card.jsx";
 import Section from "../app/components/Sections.jsx"; // Nota la 'S' mayúscula
 import Assets from "../app/components/Specifics/Assets.jsx";
