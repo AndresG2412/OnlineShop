@@ -11,7 +11,7 @@ import { auth } from "@/Libs/firebase"
 import { toast } from 'react-hot-toast'
 import { useState, useEffect } from "react"
 
-import icon from '../../Images/icono_shop_2.webp'
+import icon from '@/app/images/icono_shop_2.webp'
 
 export default function Login() {
     const router = useRouter()

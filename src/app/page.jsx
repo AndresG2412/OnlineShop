@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { db } from "../Libs/firebase.js"; // Asegúrate de que la ruta sea correcta
+import { db } from "@/Libs/firebase.js";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import Link from "next/link";
 
 // necesitamos devolver todo a antes del error
 // primero verificamos que estamos en main con "git pull origin main" y llamamos too e la rama main e github a la local con "git pull origin main"
 
-import Card from "../app/components/Card.jsx";
-import Section from "../app/components/Sections.jsx"; // Nota la 'S' mayúscula
-import Assets from "../app/components/Specifics/Assets.jsx";
+import Card from "@/app/components/Card.jsx";
+import Section from "@/app/components/Sections.jsx";
+import Assets from "@/app/components/Specifics/Assets.jsx";
 
 export default function Main() {
   const [secciones, setSecciones] = useState([]);

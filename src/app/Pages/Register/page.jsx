@@ -1,15 +1,12 @@
 "use client";
 
 import React, { useState } from 'react';
-import icon from '../../Images/icono_shop_2.webp';
+import icon from '@/app/images/icono_shop_2.webp';
 import Image from 'next/image';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation'; // Para el App Router de Next.js 13+
 // Si usas Pages Router (Next.js 12 o inferior), cambia a:
 // import { useRouter } from 'next/router';
-
-// Importa tu configuración de Firebase
-import { auth } from "../../../Libs/firebase"
 
 export default function Page() {
     // Estado para controlar la vista del formulario (true = Login, false = Register)
