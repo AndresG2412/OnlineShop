@@ -7,7 +7,6 @@ import Link from "next/link";
 
 // necesitamos devolver todo a antes del error
 // primero verificamos que estamos en main con "git pull origin main" y llamamos too e la rama main e github a la local con "git pull origin main"
-// racha
 
 import Card from "@/app/components/Card.jsx";
 import Section from "@/app/components/Sections.jsx";
